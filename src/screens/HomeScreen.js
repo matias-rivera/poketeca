@@ -1,11 +1,11 @@
 import React,{useEffect, useState} from 'react'
-import { getPokemons, getPokemonsDetails, getMyPokemons } from "../core/apiCore";
+import { getPokemons, getPokemonsDetails, getMyPokemons, searchPokemons } from "../core/apiCore";
 import axios from 'axios'
 import Pokecard from "../components/pokecard/Pokecard";
 import SearchBox from './../components/searchbox/SearchBox';
 
 
-const HomeScreen = () => {
+const HomeScreen = ({history}) => {
     const [pokemons, setPokemons] = useState([])
     const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/')
     const [next, setNext] = useState('')
@@ -32,6 +32,7 @@ const HomeScreen = () => {
         })
     }
 
+    
     //load products
     useEffect(() => {
         loadPokemons()
@@ -41,7 +42,7 @@ const HomeScreen = () => {
     return ( 
         <>
         
-        <SearchBox/>
+        <SearchBox history={history}/>
         <div className='poke-wrapper'>
 
             {loading 
@@ -58,8 +59,8 @@ const HomeScreen = () => {
             }
       </div>
       <div className='np-buttons'>
-        {<button disabled={!previous ? true : previous === url ? true : false} className='btn btn-previous btn-red' onClick={() => setUrl(previous)}>Previous</button>}
-        {<button disabled={!next ? true : next === url ? true : false} className='btn btn-next btn-red' onClick={() => setUrl(next)}>Next</button>}
+        {<button disabled={!previous ? true : previous === url ? true : false} className='btn-nav btn-previous btn-red' onClick={() => setUrl(previous)}>Previous</button>}
+        {<button disabled={!next ? true : next === url ? true : false} className='btn-nav btn-next btn-red' onClick={() => setUrl(next)}>Next</button>}
       </div>
       
       </>

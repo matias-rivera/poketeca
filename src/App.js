@@ -6,6 +6,7 @@ import MyPokemonsScreen from './screens/MyPokemonsScreen';
 import MyTeamsScreen from './screens/MyTeamsScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import PokemonScreen from './screens/PokemonScreen';
+import SearchScreen from './screens/SearchScreen';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/myteams' component={MyTeamsScreen} exact/>
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/pokemon/:id' component={PokemonScreen} />
+          <Route path='/search/:keyword' component={SearchScreen} />
           <Route path='/' component={HomeScreen} exact/>
         </main>
       </Router>
