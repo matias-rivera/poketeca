@@ -1,7 +1,14 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import './Pokecard.css';
 
-const Pokecard = ({pokemon}) => {
+const Pokecard = ({pokemon, history}) => {
+
+const [inList, setInList] = useState(false)
+
+useEffect(() => {
+    setInList(isPokemonInList(pokemon))
+},[])
 
 const addPokemon = (e,pokemon) => {
     e.preventDefault()
@@ -13,8 +20,27 @@ const addPokemon = (e,pokemon) => {
         if(!isPokemonInList){
             pokemons = [...pokemons, {id: pokemon.id, name: pokemon.name}] 
             localStorage.setItem('pokemons', [JSON.stringify(pokemons)])
+            setInList(true)
         }else{
             alert('Pokemon already in list')
+        }
+    }
+
+}
+
+const removePokemon = (e,pokemon) => {
+    e.preventDefault()
+    if(!localStorage.getItem('pokemons')){
+        localStorage.setItem('pokemons',JSON.stringify([{id: pokemon.id, name: pokemon.name}]))
+    }else{
+        let pokemons = JSON.parse(localStorage.getItem('pokemons'))
+        const isPokemonInList = pokemons.find(poke => poke.id === pokemon.id)
+        if(isPokemonInList){
+            pokemons = pokemons.filter(item => item.id !== pokemon.id)
+            localStorage.setItem('pokemons', [JSON.stringify(pokemons)])
+            setInList(false)
+        }else{
+            alert('Pokemon is not in list')
         }
     }
 
@@ -59,8 +85,12 @@ return (
                     <p className='poke-description'>{pokemon.species.flavor_text_entries[1].flavor_text}</p>
                 </div>
                 <div className='btn-group'>
-                    <button className='btn-info'>Info</button>
-                    <button  className='btn-add' disabled={isPokemonInList(pokemon)} onClick={(e) => addPokemon(e,pokemon)}>Catch</button>
+                    <Link className='btn-card btn-info' to={`/pokemon/${pokemon.id}`}>Info</Link>
+                    {inList
+                    ?   <button  className='btn-card btn-release' onClick={(e) => removePokemon(e,pokemon)}>Release</button> 
+                    : <button  className='btn-card btn-add' onClick={(e) => addPokemon(e,pokemon)}>Catch</button> }
+                   
+                    
                 </div>
                 {/* <button onClick={(e) => clearList(e)}>Clear</button> */}
         </div>

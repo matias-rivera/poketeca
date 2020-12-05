@@ -94,35 +94,44 @@
     align-items: end;
 }
 
-.btn-add{
+.btn-card{
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;
     border: 1px solid black;
-    bottom:0;
-    right:0;
+    font-weight: 500;
     background-color: white;
-    color: #000;
     cursor: pointer;
+    height: 100%;
+    color: #000;
 }
 
-.btn-info{
-    padding: 8px 20px;
-    border-radius: 4px;
-    outline: none;
-    border: 1px solid black;
-    bottom:0;
-    right:0;
-    background-color: white;
-    color: #000;
-    cursor: pointer;
+.btn-add{
+    transition: all 0.3s ease-out;
 }
 
 .btn-add:hover{
-    color: red;
-    transition: all 0.3s ease-out;
-    transition: 250ms;
+    color: green;
+    font-weight: bold;
 }
+
+.btn-release{
+    transition: all 0.3s ease-out;
+}
+
+.btn-release:hover{
+    color: red;
+    font-weight: bold;
+}
+
+.btn-info{
+    text-decoration: none;
+}
+
+.btn-info:hover{
+    color:blue;
+}
+
 
 .btn-add:disabled{
     cursor: not-allowed;

@@ -23,7 +23,7 @@ const Navbar = () => {
                     </li>
                 ))}
             </ul>
-            <Button>Sign up</Button>
+            {/* <Button>Sign up</Button> */}
         </nav>
       );
 }

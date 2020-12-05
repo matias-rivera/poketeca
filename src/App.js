@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import MyPokemonsScreen from './screens/MyPokemonsScreen';
 import MyTeamsScreen from './screens/MyTeamsScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import PokemonScreen from './screens/PokemonScreen';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/mypokemons' component={MyPokemonsScreen} exact/>
           <Route path='/myteams' component={MyTeamsScreen} exact/>
           <Route path='/profile' component={ProfileScreen} />
+          <Route path='/pokemon/:id' component={PokemonScreen} />
           <Route path='/' component={HomeScreen} exact/>
         </main>
       </Router>

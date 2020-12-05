@@ -2,7 +2,7 @@
     --primary: #ff7b23;
 }
 
-.btn {
+.btn-nav {
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;
@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-.btn:hover{
+.btn-nav:hover{
  padding: 8px 20px;
  transition: all 0.3s ease-out;
  background: #fff;
