@@ -22,7 +22,7 @@ const Button = ({
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
     return ( 
         <button 
-            className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+            className={`btn ${checkButtonStyle} ${checkButtonSize} btn-navbar`}
             onClick={onClick}
             type={type}
         >

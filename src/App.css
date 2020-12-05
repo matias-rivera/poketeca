@@ -5,19 +5,68 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.wrapper{
+.main{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 12px;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+}
+
+.poke-wrapper{
     display: grid;
-    grid-template-columns: repeat(4,200px);
+    grid-template-columns: repeat(4,250px);
     align-items: center;
     justify-content: center;
     column-gap: 10px;
-     row-gap: 15px;
+    row-gap: 15px;
+
 }
 
-.pokecard{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    background-color: aqua;
-    width: 200px;
+.np-buttons{
+    display: flex;
+    align-self: center;
+    flex:1;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 720px;
+}
+
+.btn-previous {
+    display: flex;
+    align-self: start;
+}
+
+.btn-next {
+    display: flex;
+    align-self: end;
+}
+
+.btn:disabled{
+    background: gray;
+}
+
+
+
+.btn:disabled:hover{
+    background: gray;
+    color:white;
+    
+}
+
+.btn-red{
+    background: red;
+    color: white;
+    border: 3px solid #fd5e53;
+    
+}
+
+@media screen and (max-width: 960px) {
+    .poke-wrapper{
+        grid-template-columns: repeat(2,200px);
+    }
 }
