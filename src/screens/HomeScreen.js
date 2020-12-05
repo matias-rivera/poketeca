@@ -1,8 +1,9 @@
 import React,{useEffect, useState} from 'react'
-import { getPokemons, getPokemonsDetails } from "../core/apiCore";
+import { getPokemons, getPokemonsDetails, getMyPokemons } from "../core/apiCore";
 import axios from 'axios'
 import Pokecard from "../components/pokecard/Pokecard";
 import SearchBox from './../components/searchbox/SearchBox';
+
 
 const HomeScreen = () => {
     const [pokemons, setPokemons] = useState([])
@@ -39,6 +40,7 @@ const HomeScreen = () => {
 
     return ( 
         <>
+        
         <SearchBox/>
         <div className='poke-wrapper'>
 

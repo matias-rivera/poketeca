@@ -2,22 +2,22 @@ export const MenuItems = [
 
     {
         title: 'My Pokemons',
-        url: '#',
+        url: '/mypokemons',
         cName: 'nav-links'
     },
     {
         title: 'My Teams',
-        url: '#',
+        url: '/myteams',
         cName: 'nav-links'
     },
     {
         title: 'Profile',
-        url: '#',
+        url: '/profile',
         cName: 'nav-links'
     },
     {
         title: 'Sign up',
-        url: '#',
+        url: '/signup',
         cName: 'nav-links-mobile'
     }
 ]
