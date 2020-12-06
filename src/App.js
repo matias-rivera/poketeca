@@ -13,10 +13,10 @@ function App() {
   
 
   return (
-    <div className="App">
+    <div className="App" >
       <Router>
         <Navbar />
-        <main className='main'>
+        <main className='main' >
           <Route path='/mypokemons' component={MyPokemonsScreen} exact/>
           <Route path='/myteams' component={MyTeamsScreen} exact/>
           <Route path='/profile' component={ProfileScreen} />

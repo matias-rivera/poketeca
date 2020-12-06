@@ -22,6 +22,17 @@ export const searchPokemons = async (keyword, setPokemons) => {
 
 }
 
+export const getPokemonById = async (id, setPokemon) => {
+    await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(data => {
+        let poke = data.data
+        axios.get(poke.species.url).then(species_data =>{
+            const species = species_data.data
+            const pokemon = {...poke,species}
+            setPokemon(pokemon)
+        })   
+    })
+}
+
 export const getAllPokemons = () =>{
     return AllPokemons
 }
@@ -59,7 +70,7 @@ export const getPokemonsDetails = async(pokemons, setPokemons) => {
             pokeList = [...pokeList, {...poke,species}]
             setPokemons(pokeList)
             
-        })   
+        })
         })
     })
     

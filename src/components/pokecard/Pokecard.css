@@ -67,12 +67,13 @@
     background-color: white;
     height:100%;
     max-height: 150px;
+    background:linear-gradient(90deg, rgb(255, 255, 255) 29%, rgb(243, 243, 243) 78%);
     
 }
 
 .poke-description{
     padding: 10px 20px;
-    background:linear-gradient(90deg, rgb(255, 255, 255) 29%, rgb(243, 243, 243) 78%);
+    
 }
 
 .poke-types{

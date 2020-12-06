@@ -7,6 +7,7 @@
     border-radius: 4px;
     outline: none;
     border:none;
+    border: 1px solid #fd5e53;
     cursor: pointer;
 }
 
@@ -15,6 +16,7 @@
  transition: all 0.3s ease-out;
  background: #fff;
  color: #ff0000;
+ 
  transition: 250ms;
 }
 

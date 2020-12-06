@@ -43,6 +43,10 @@ const HomeScreen = ({history}) => {
         <>
         
         <SearchBox history={history}/>
+        <div className='np-buttons'>
+            {<button disabled={!previous ? true : previous === url ? true : false} className='btn-nav btn-previous btn-red' onClick={() => setUrl(previous)}>Previous</button>}
+            {<button disabled={!next ? true : next === url ? true : false} className='btn-nav btn-next btn-red' onClick={() => setUrl(next)}>Next</button>}
+        </div>
         <div className='poke-wrapper'>
 
             {loading 
@@ -58,10 +62,7 @@ const HomeScreen = ({history}) => {
                 
             }
       </div>
-      <div className='np-buttons'>
-        {<button disabled={!previous ? true : previous === url ? true : false} className='btn-nav btn-previous btn-red' onClick={() => setUrl(previous)}>Previous</button>}
-        {<button disabled={!next ? true : next === url ? true : false} className='btn-nav btn-next btn-red' onClick={() => setUrl(next)}>Next</button>}
-      </div>
+      
       
       </>
      );
