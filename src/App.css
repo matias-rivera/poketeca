@@ -136,7 +136,7 @@
     
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 600px) {
     .poke-wrapper{
         grid-template-columns: repeat(1,200px);
         row-gap: 15px;

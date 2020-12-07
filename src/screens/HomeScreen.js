@@ -35,6 +35,7 @@ const HomeScreen = ({history}) => {
     
     //load products
     useEffect(() => {
+        setPokemons([])
         loadPokemons()
     }, [url]);
 
