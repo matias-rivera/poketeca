@@ -122,12 +122,25 @@
 @media screen and (max-width: 960px) {
     .poke-wrapper{
         grid-template-columns: repeat(2,200px);
-        row-gap: 15px;
+        row-gap: 2px;
+        column-gap: 10px;
         
     }
 
     .pokemon-side_description{
         align-items: center;
+    }
+
+
+
+    
+}
+
+@media screen and (max-width: 740px) {
+    .poke-wrapper{
+        grid-template-columns: repeat(1,200px);
+        row-gap: 15px;
+        
     }
 
     
