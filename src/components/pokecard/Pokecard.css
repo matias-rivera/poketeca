@@ -47,6 +47,7 @@
     max-width: 80%;
     display: flex;
     align-self: flex-start;
+    font-size: 20px;
     
 
 }
@@ -144,10 +145,27 @@
 
 @media screen and (max-width: 960px) {
     .pokecard{
-        width: 200px
+        width: 200px;
+       
     }
     .poke-description{
         font-size: 12px;
+        padding: 1px 1px;
+    }
+    .poke-title {
+        font-size: 15px;
+    }
+    
+    .poke-type{
+        font-size: 12px;
+    }
+
+    .poke-image{
+        max-width: 120px;
+    }
+
+    .btn-card {
+        font-size: 10px;
     }
 }
 

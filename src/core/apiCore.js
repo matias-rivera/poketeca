@@ -6,7 +6,7 @@ export const searchPokemons = async (keyword, setPokemons) => {
     const pokemons = AllPokemons.filter(item => (item.identifier.indexOf(keyword.toLowerCase()) > -1));
     if(pokemons.length > 0){
         let pokeList = []
-        await pokemons.forEach(pokemon => {
+        await pokemons.slice(0,20).forEach(pokemon => {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).then(data => {
             let poke = data.data
             axios.get(poke.species.url).then(species_data =>{

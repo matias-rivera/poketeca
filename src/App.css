@@ -8,8 +8,8 @@
 .main{
     display: flex;
     flex-direction: column;
-    
     align-self: center;
+    align-items: center;
     gap: 12px;
     max-width: 1020px;
     margin: 0 auto;
@@ -91,6 +91,10 @@
 
 }
 
+.pokemon-description {
+    padding: 10px 20px;
+}
+
 .pokemon-side_description {
     
     max-width: 250px;
@@ -114,14 +118,17 @@
 
 }
 
-@media screen and (max-width: 960px) {
-    .pokemon-side_description{
-        align-items: center;
-    }
-}
 
 @media screen and (max-width: 960px) {
     .poke-wrapper{
         grid-template-columns: repeat(2,200px);
+        row-gap: 15px;
+        
     }
+
+    .pokemon-side_description{
+        align-items: center;
+    }
+
+    
 }
