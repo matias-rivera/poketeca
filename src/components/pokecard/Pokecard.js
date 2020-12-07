@@ -28,6 +28,7 @@ const addPokemon = (e,pokemon) => {
     e.preventDefault()
     if(!localStorage.getItem('pokemons')){
         localStorage.setItem('pokemons',JSON.stringify([{id: pokemon.id, name: pokemon.name}]))
+        setInList(true)
     }else{
         let pokemons = JSON.parse(localStorage.getItem('pokemons'))
         const isPokemonInList = pokemons.find(poke => poke.id === pokemon.id)
