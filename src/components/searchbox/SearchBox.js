@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './SearchBox.css'
-import { searchPokemons } from '../../core/apiCore';
 
 const SearchBox = ({history, placedKeyword=''}) => {
 
     const [keyword, setKeyword] = useState(placedKeyword)
 
     const handleSearch = () => {
-        history.push(`/search/${keyword}`)
+        if(keyword){
+            history.push(`/search/${keyword}`)
+        }
     }
 
     const onKeyPress = (e) => {
@@ -19,7 +20,15 @@ const SearchBox = ({history, placedKeyword=''}) => {
 
     return ( 
         <div className='search-box'>
-            <input className='search' placeholder='Search by name...' type='text' name='search' value={keyword} onKeyPress={(e) => onKeyPress(e)} onChange={(e) => setKeyword(e.target.value)}/>
+            <input 
+                className='search' 
+                placeholder='Search by name...' 
+                type='text' 
+                name='search' 
+                value={keyword} 
+                onKeyPress={(e) => onKeyPress(e)} 
+                onChange={(e) => setKeyword(e.target.value)}
+            />
             <button onClick={() => handleSearch()} className='search-btn' type='submit'><i className='fa fa-search' aria-hidden='true'></i></button>
         </div>
      );

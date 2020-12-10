@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getPokemonById } from '../core/apiCore'
+import { getPokemon } from '../core/apiCore'
 
 const PokemonScreen = ({match}) => {
     const pokemonId = match.params.id
@@ -7,8 +7,10 @@ const PokemonScreen = ({match}) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        
-        getPokemonById(pokemonId, setPokemon).then(result => setLoading(false))
+            getPokemon(pokemonId).then(result => {
+            setPokemon(result)
+            setLoading(false)
+        })
     },[match])
 
 

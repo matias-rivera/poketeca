@@ -1,8 +1,7 @@
 import React,{useEffect, useState} from 'react'
-import { getPokemons, getPokemonsDetails, getMyPokemons, searchPokemons } from "../core/apiCore";
-import axios from 'axios'
+import { getPokemons, getPokemonsDetails } from "../core/apiCore";
 import Pokecard from "../components/pokecard/Pokecard";
-import SearchBox from './../components/searchbox/SearchBox';
+import SearchBox from '../components/searchbox/SearchBox';
 
 
 const HomeScreen = ({history}) => {
@@ -17,19 +16,16 @@ const HomeScreen = ({history}) => {
     //get all products by sold units
     const loadPokemons = () => {
         getPokemons(url).then(data => {
-        const pokemons_ = data.data.results
-        getPokemonsDetails(pokemons_, setPokemons).then(data => setLoading(false))
-
-        if(data.data.previous){
-            setPrevious(data.data.previous)
-        }
-        if(data.data.next){
-            setNext(data.data.next)
-        }
-        
-        
-            
+            console.log(data.data.results)
+            getPokemonsDetails(data.data.results, setPokemons).then(data => setLoading(false))
+            if(data.data.previous){
+                setPrevious(data.data.previous)
+            }
+            if(data.data.next){
+                setNext(data.data.next)
+            }
         })
+
     }
 
     
@@ -55,7 +51,7 @@ const HomeScreen = ({history}) => {
             : (
             
             pokemons.map((pokemon,i) => (
-                <Pokecard pokemon={pokemon} key={i}/>
+                pokemon ? <Pokecard pokemon={pokemon} key={i}/> : ''
                 ))
                 
                 

@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import Pokecard from "../components/pokecard/Pokecard";
-import { getMyPokemons } from '../core/apiCore';
+import { getPokemonsDetails } from '../core/apiCore';
 
 const MyPokemonsScreen = () => {
     const [pokemons, setPokemons] = useState([])
@@ -8,7 +8,8 @@ const MyPokemonsScreen = () => {
 
     //load pokemons
     useEffect(() => {
-        getMyPokemons(setPokemons).then(result => setLoading(false))
+        const myPokemons = JSON.parse(localStorage.getItem('pokemons'))
+        getPokemonsDetails(myPokemons,setPokemons).then(() => setLoading(false)) 
     }, []);
 
     return ( 

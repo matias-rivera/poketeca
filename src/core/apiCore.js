@@ -2,74 +2,69 @@ import axios from 'axios'
 import AllPokemons from '../data/pokemons.json'
 
 
-export const searchPokemons = async (keyword, setPokemons) => {
+//search for pokemon by keyword
+export const searchPokemons = (keyword) => {
+    //filter pokemons data
     const pokemons = AllPokemons.filter(item => (item.identifier.indexOf(keyword.toLowerCase()) > -1));
-    if(pokemons.length > 0){
-        let pokeList = []
-        pokemons.slice(0,20).forEach(item => {
-            console.log(item)
-        })
-        try {
-            pokemons.slice(0,20).forEach(pokemon => {
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).then(data => {
-                    let poke = data.data
-                    axios.get(poke.species.url).then(species_data =>{
-                        if(species_data){
-                            const species = species_data.data
-                            pokeList = [...pokeList, {...poke,species}]
-                            setPokemons(pokeList)
-                        }
-                        
-                    }).catch(e => {return console.log(e.message)})
-                })
-            }).catch(e => {return console.log(e)})
-        } catch (error) {
-            console.log(error.message)
-        }
-       
-    }
-    //const pokemons = AllPokemons.find(pokemon => keyword === pokemon.identifier || parseInt(keyword) === pokemon.id)
-
+    return pokemons
 }
 
-export const getPokemonById = async (id, setPokemon) => {
+//get pokemons details
+export const getPokemonsDetails = async (bulk,setPokemons) => {
+    let pokemons = []
+    //create a promise
+    return await new Promise((resolve, reject) => {
+        //get each pokemon data
+        bulk.forEach((pokemon, index, array) => {
+            //get pokemon
+            let field
+
+            if(pokemon.name){
+                field = 'name'
+            }else{
+                field = 'id'
+            }
+            console.log(field)
+            getPokemon(pokemon[field]).then(result => {
+                //set pokemons
+                pokemons = [...pokemons, result]
+                setPokemons(pokemons)
+            }).catch(e => console.log(e.message))
+            if (index === array.length -1) resolve();
+        });
+    });
     
-    await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then(data => {
-        let poke = data.data
-        axios.get(poke.species.url).then(species_data =>{
-            const species = species_data.data
-            const pokemon = {...poke,species}
-            setPokemon(pokemon)
-        }).catch(e => {return console.log(e.message)})   
-    })
 }
 
+
+//get pokemon by id
+export const getPokemon = async (field) => {
+        //Get pokemon data
+        const pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${field}`).then(data => {
+            const poke = data.data
+            //Get pokemon species details
+            return axios.get(poke.species.url).then(result => {
+                const species = result.data
+                //populate
+                const _pokemon = {...poke, species}
+                return _pokemon
+            }).catch(e => console.log(e.message))
+        }).then(response => {return response}).catch(e => console.log(e.message))
+        return pokemon
+}
+
+//get details from a single pokemon
+export const getPokemonDetails = async (id) => {
+    const pokemons = await getPokemon(id).then(result => {return result.data}).catch(e => console.log(e.message))
+    return pokemons
+}
+
+//get all pokemons data
 export const getAllPokemons = () =>{
     return AllPokemons
 }
 
-export const getMyPokemons = async (setPokemons) => {
 
-    const myPokemons = JSON.parse(localStorage.getItem('pokemons'))
-    let pokeList = []
-    
-    if(myPokemons){
-        await myPokemons.forEach(pokemon => {
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).then(data => {
-            let poke = data.data
-            axios.get(poke.species.url).then(species_data =>{
-                const species = species_data.data
-                pokeList = [...pokeList, {...poke,species}]
-                setPokemons(pokeList)
-                
-            })   
-            }).catch(e =>{return console.log(e.message)})
-        })
-    }
-    else{
-        return []
-    }
-}
 
 //get pokemons
 export const getPokemons = async (url) => {
@@ -78,24 +73,4 @@ export const getPokemons = async (url) => {
 };
 
 
-export const getPokemonsDetails = async(pokemons, setPokemons) => {
-    let pokeList = []
-    try {
-        await pokemons.forEach(pokemon => {
-            axios.get(pokemon.url).then(data => {
-            let poke = data.data
-            axios.get(poke.species.url).then(species_data =>{
-                const species = species_data.data
-                pokeList = [...pokeList, {...poke,species}]
-                setPokemons(pokeList)
-                
-            }).catch(e => {return console.log(e.message)})
-            })
-        })
-        
-    } catch (error) {
-        console.log(error.message)
-    }
-    
-}
 
