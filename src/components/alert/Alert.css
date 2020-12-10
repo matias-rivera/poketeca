@@ -1,0 +1,54 @@
+
+.alert{
+    
+    background: #ff6b6b;
+    padding: 20px 40px;
+    max-width: 650px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 8px solid #e04f4a;
+
+}
+
+.hide{
+    display: none;
+}
+
+
+
+.alert .fa-exclamation-circle{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.alert .msg{
+    padding: 0 20px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.alert .close-btn{
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e04f4a;
+    padding: 20px 18px;
+    cursor: pointer;
+}
+
+.close-btn:hover{
+    background: #f15454;
+}
+
+.close-btn .fa-times{
+    color:  #ffffff;
+    font-size: 22px;
+    line-height: 40px;
+}

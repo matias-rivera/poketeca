@@ -1,5 +1,5 @@
 
-.pokecard{
+.pokecard {
     display: flex;
     border: 1px solid #fd5e53;
     flex-direction: column;
@@ -25,7 +25,7 @@
     */
 }
 
-.poke-image{
+.pokecard__image{
     border: 1px solid #000;
     border-bottom: none;
     background-color: #f7f7f7f7;
@@ -33,14 +33,14 @@
     width: 150px;
 }
 
-.poke-top{
+.pokecard__top{
     display: flex;
     align-items: start;
     justify-content: space-between;
     width: 100%;
 }
 
-.poke-title{
+.pokecard__top-title{
     color: #f7f7f7f7;
     background: linear-gradient(90deg, rgb(223, 68, 68) 29%, rgb(224, 29, 29) 78%);
     padding: 2px 2px;
@@ -52,7 +52,7 @@
 
 }
 
-.poke-number{
+.pokecard__top-number{
     width: 100%;
     max-width: 60px;
     height: 20px;
@@ -63,7 +63,7 @@
 
 }
 
-.poke-text{
+.pokecard__text{
     text-align: center;
     background-color: white;
     height:100%;
@@ -72,22 +72,22 @@
     
 }
 
-.poke-description{
+.pokecard__text-description{
     padding: 10px 20px;
     
 }
 
-.poke-types{
+.pokecard__text-types{
     display: flex;
     justify-content: space-around;
 }
 
-.poke-type{
+.pokecard__text-type{
     width: 100%;
     background: linear-gradient(90deg, rgb(233, 233, 233) 29%, rgb(235, 225, 225) 78%);
 }
 
-.btn-group{
+.pokecard__btn-group{
     display: flex;
     align-self: end;
     flex: row;
@@ -148,19 +148,19 @@
         width: 200px;
        
     }
-    .poke-description{
+    .pokecard__text-description{
         font-size: 12px;
         padding: 1px 1px;
     }
-    .poke-title {
+    .pokecard__top-title {
         font-size: 15px;
     }
     
-    .poke-type{
+    .pokecard__text-type{
         font-size: 12px;
     }
 
-    .poke-image{
+    .pokecard__image{
         max-width: 120px;
     }
 

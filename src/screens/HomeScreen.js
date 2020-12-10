@@ -35,9 +35,10 @@ const HomeScreen = ({history}) => {
         loadPokemons()
     }, [url]);
 
-
     return ( 
         <>
+       
+            
         
         <SearchBox history={history}/>
         <div className='np-buttons'>
@@ -45,6 +46,7 @@ const HomeScreen = ({history}) => {
             {<button disabled={!next ? true : next === url ? true : false} className='btn-nav btn-next btn-red' onClick={() => setUrl(next)}>Next</button>}
         </div>
         <div className='poke-wrapper'>
+            
 
             {loading 
             ? <p>Loading...</p>

@@ -4,8 +4,8 @@ export const MenuItems = [
         title: 'My Pokemons',
         url: '/mypokemons',
         cName: 'nav-links'
-    }/* ,
-    {
+    },
+/*     {
         title: 'My Teams',
         url: '/myteams',
         cName: 'nav-links'

@@ -42,8 +42,10 @@ export const getPokemon = async (field) => {
         //Get pokemon data
         const pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${field}`).then(data => {
             const poke = data.data
+            
             //Get pokemon species details
-            return axios.get(poke.species.url).then(result => {
+            return axios.get(data.data.species.url).then(result => {
+                console.log(poke.species.url)
                 const species = result.data
                 //populate
                 const _pokemon = {...poke, species}
